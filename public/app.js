@@ -97,7 +97,7 @@
             $http.get('/api/polls').then(function (res) {
                 vm.polls = res.data;
             }, function (err) {
-                console.log(err);
+                alert('A problem has occurred');
             });
         }
 
@@ -110,9 +110,9 @@
         var vm = this;
         vm.title = "LoginController";
         vm.error = '';
-        vm.user={
-            name:'',
-            password:''
+        vm.user = {
+            name: '',
+            password: ''
         }
         vm.login = function () {
             if (vm.user) {
@@ -120,11 +120,11 @@
                     $window.localStorage.token = res.data;
                     $location.path('/profile');
                 }, function (err) {
-                    vm.error = err;
+                    alert('A problem has occurred');
                 })
             }
             else {
-                console.log('You are not registered');
+                alert('You are not registered');
             }
         };
     }
@@ -134,20 +134,20 @@
         var vm = this;
         vm.title = "RegisterController";
         vm.error = '';
-        vm.user={
-            user:'',
-            password:''
+        vm.user = {
+            user: '',
+            password: ''
         }
         vm.register = function () {
             if (!vm.user) {
-                console.log('Invalid credentials');
+                alert('Invalid credentials');
             }
             $http.post('/api/register', vm.user).then(function (res) {
                 $window.localStorage.token = res.data;
                 $location.path('/profile');
             }, function (err) {
-                vm.error = err.data.errmsg;
-                vm.user=null;
+                alert('A problem has occurred');
+                vm.user = null;
             });
         }
     }
@@ -186,7 +186,7 @@
             $http.get('/api/polls').then(function (res) {
                 vm.polls = res.data;
             }, function (err) {
-                console.log(err);
+                alert('A problem has occurred');
             });
         }
 
@@ -194,7 +194,7 @@
 
         vm.addPoll = function () {
             if (!$window.localStorage.token) {
-                console.log('You need and account');
+                alert('You need and account');
                 return;
             }
             if (vm.poll) {
@@ -209,7 +209,7 @@
                 $http.post('/api/polls', payload).then(onSuccess, onError);
             }
             else {
-                console.log('No data');
+                alert('No data');
             }
         }
         var onSuccess = function (res) {
@@ -226,7 +226,7 @@
             vm.getAllPolls();
         }
         var onError = function (err) {
-            console.error(err);
+            alert('A problem has occurred');
         }
     }
 
@@ -237,7 +237,7 @@
         vm.title = "PollController";
         vm.poll;
         vm.data;
-        vm.link = ''+$location.path;
+        vm.link = '' + $location.path;
 
         vm.addOption = function () {
             if (vm.option && $window.localStorage.token) {
@@ -249,11 +249,11 @@
                     vm.option = null;
                     vm.getPoll();
                 }, function (err) {
-                    console.log(err);
+                    alert('A problem has occurred');
                 });
             }
-            else{
-                console.log('You need authentication');
+            else {
+                alert('You need authentication');
             }
         }
 
@@ -268,7 +268,7 @@
                 google.charts.setOnLoadCallback(drawChart);
             }, function (err) {
                 $location.path('/polls');
-                console.log(err)
+                alert('A problem has occurred');
             });
         }
         vm.getPoll();
@@ -301,11 +301,11 @@
                     .then(function (res) {
                         vm.getPoll();
                     }, function (err) {
-                        console.log(err);
+                        alert('A problem has occurred');
                     })
             }
             else {
-                console.log(err);
+                alert('A problem has occurred');
             }
         }
 
