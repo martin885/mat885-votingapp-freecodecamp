@@ -5,13 +5,13 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 var router=require('./routes/api.js');
 const app = express();
-
-var dburl = 'mongodb://localhost/freecodecampvoting' || process.env.MONGOURI;
+dotenv.config();
+var dburl = process.env.MONGOURI || 'mongodb://localhost/freecodecampvoting' ;
 const port = Number(process.env.PORT || 8080);
 
-dotenv.config();
 
-mongoose.connect(dburl, function (err) {
+
+mongoose.connect(dburl , function (err) {
     if (err) {
         console.log(err);
     }

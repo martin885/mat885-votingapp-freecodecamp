@@ -1,16 +1,16 @@
-<h3>{{vm.title}}</h3>
+<h1 class="text-center">Voting App</h1>
 <hr>
-
+<div class="container">
 <hr>
-<a href="/login">Login</a>
+<a href="/login" class="btn btn-primary btn-block">Login</a>
 <br>
-<a href="/register">Register</a>
-<br>
-<a href="/profile">Profile</a>
-<br>
-
-
-<a href="/polls">Polls</a>
-<br>
-
-
+<a href="/register" class="btn btn-primary btn-block">Register</a>
+<br><br>
+<div >
+<ul class="list-group list-group-flush">
+    <li ng-repeat="poll in vm.polls" class="list-group-item list-group-item-action" >
+        <a href="/polls/{{poll._id}}" ><h4>{{poll.name}}</h4></a>
+    </li>
+</ul>
+</div>
+</div>

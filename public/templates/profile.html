@@ -1,4 +1,36 @@
 <!DOCTYPE html>
-<h3>{{vm.title}}</h3>
+<h1 class="text-center">Your Profile</h1>
+
 <hr>
-<h3>Welcome back, {{vm.user.name}}</h3>
+<h3>Welcome back, {{vm.currentUser.name}}</h3>
+<br>
+<a href="/polls" class="btn btn-primary btn btn-block">New Poll</a>
+<br><br>
+<h3 ng-if="vm.polls.length >0">Your Polls</h3>
+<ul class="list-group list-group-flush">
+    <li ng-repeat="poll in vm.polls" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" >
+      <div >
+        <a href="/polls/{{poll._id}}" ><h4>{{poll.name}}</h4></a>
+      
+      
+      
+      
+      
+    </div>
+      
+        <div ng-repeat="option in poll.options">
+            Option: {{option.name}} <br>
+            Votes:{{option.votes}}
+            <br><br>
+        </div>
+   
+   
+
+    <button class="btn btn-danger " ng-click="vm.deletePoll(poll._id)"><h3>Delete</h3></button>
+    </li>
+</ul>
+<br><br>
+
+
+
+<button class="btn btn-danger btn-block" ng-click="vm.logOut()" ng-if="vm.currentUser">Logout</button>

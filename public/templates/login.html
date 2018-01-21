@@ -1,7 +1,6 @@
 
-    <h3>{{vm.title}}</h3>
+    <h1 class="text-center">Login</h1>
     <hr>
-    <h4 ng-if="vm.error">{{vm.error}}</h4>
     <br>
     <input type="ext" ng-model="vm.user.name" class="form-control" placeholder="Name...">
     <br>
@@ -9,4 +8,4 @@
     
     
     <br>
-    <button class="btn btn-success" ng-click="vm.login()" ng-disabled="!vm.user.name || !vm.user.password">Login</button>
+    <button class="btn btn-primary btn-block" ng-click="vm.login()" ng-disabled="!vm.user.name || !vm.user.password">Login</button>

@@ -1,2 +1,22 @@
 <!DOCTYPE html>
-<h3>{{vm.title}}</h3>
+<h1 class="text-center">Poll : {{vm.data.name}}</h1>
+<hr>
+<hr>
+<div id="columnchart_values" class="container" style="width: 900px; height:500px;"></div>
+<hr>
+<h3>
+Poll created by :  {{vm.owner}}</h3>
+<hr>
+<div class="form-group"> 
+<select ng-model="vm.selected" class="form-control">
+    <option ng-repeat="option in vm.poll" value="{{option._id}}">{{option.name}}</option>
+</select>
+</div>
+
+
+
+<input type="text" ng-model="vm.option" class="form-control" placeholder="Add option"><br>
+<button ng-click="vm.addOption()" class="btn btn-primary btn-block" ng-disabled="!vm.option">Add option</button>
+<br>
+<br>
+<button ng-click="vm.vote()" class="btn btn-success btn-block" ng-disabled="!vm.selected">Vote</button>
