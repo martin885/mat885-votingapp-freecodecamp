@@ -87,6 +87,7 @@ router.post('/polls', authenticate, function (req, res) {
 
     poll.save(function (err, data) {
         if (err) {
+            console.log('Save'+err);
             return res.status(400).send(err);
         }
         return res.status(201).send(data);
@@ -95,13 +96,14 @@ router.post('/polls', authenticate, function (req, res) {
 
 function authenticate(req, res, next) {
     if (!req.headers.authorization) {
+        console.log('No token'+err);
         return res.status(400).send('There is no token')
     }
     if (req.headers.authorization.split(' ')[1]) {
         var token = req.headers.authorization.split(' ')[1];
         jwt.verify(token, process.env.secret, function (err, decoded) {
             if (err) {
-
+                console.log('verifytoken'+err);
                 return res.status(400).send(err);
             }
             next();

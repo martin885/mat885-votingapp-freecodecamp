@@ -226,6 +226,7 @@
             vm.getAllPolls();
         }
         var onError = function (err) {
+            console.log(err);
             alert('A problem has occurred');
         }
     }

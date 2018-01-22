@@ -18,8 +18,7 @@ options:[{
 
 
         type:String,
-        required:true,
-        unique:false    
+        required:true 
     },
     votes:{
         type:Number,
@@ -37,5 +36,5 @@ owner:{
 }
 });
 
-const Polls=mongoose.model('Polls',PollsSchema);
+const Polls=mongoose.model('Poll',PollsSchema);
 module.exports=Polls;
